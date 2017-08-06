@@ -1,3 +1,41 @@
 <p>
   top works!
 </p>
+
+<h2>ngModel について</h2>
+
+<!-- 両方向バインディング -->
+<h3>1. 両方向バインディング</h3>
+<input type="text" [(ngModel)]="hoge">
+<span>{{hoge}}</span>
+<br>
+<!-- 片方向バインディング -->
+<h3>2. 片方向バインディング</h3>
+<input type="text" [(ngModel)]="hoge1">
+<input [value]="hoge1">
+<!-- ngIf -->
+<h3>3. ngIf</h3>
+<input type="text" [(ngModel)]="hoge2">
+<span *ngIf="hoge2==='1'">
+  1が入力されました。ß
+</span>
+<!-- ng-invalid & ng-dirty -->
+<h3>4. ng-invalid & ng-dirty</h3>
+<form #f="ngForm" novalidate>
+<!--  <input type="text" name="hoge3" ngModel required>-->
+  <input type="text" name="hoge3" ngModel required>
+  <p [hidden]="!f.form.dirty || f.form.valid">必須入力です</p>
+  <span *ngIf="hoge3==='2'">
+    2が入力されました。
+  </span>
+</form>
+<!-- ngFor -->
+<h3>5. ngFor</h3>
+<form #f2="ngForm" novalidate>
+  <input type="text" name="hoge4" ngModel required>
+  <p [hidden]="!f2.form.dirty || f2.form.valid">必須入力です</p>
+</form>
+<ul>
+  <li *ngFor="let data of demoData">{{data.name}} - {{data.age}}</li>
+</ul>
+

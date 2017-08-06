@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'Angular Shop New';
-  demoData: any = [
-    {name: '山田', age: 24},
-    {name: '田中', age: 28},
-    {name: '佐藤', age: 18},
-    {name: '井上', age: 32},
-    {name: '高橋', age: 46}
-  ]
+
+  constructor(private router: Router) {
+    this.router.events
+      .filter(e => e instanceof NavigationStart)
+      .pairwise()
+      .subscribe((e) => { 
+        console.log(e);
+      }
+    );
+  }
 
 }
