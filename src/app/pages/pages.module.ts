@@ -8,6 +8,7 @@ import { TopComponent } from './top/top.component';
 import { IssueComponent } from './issue/issue.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { MarkdownPipe } from './wiki/markdown.pipe';
+import { IssueService } from "./issue/issue.service";
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { MarkdownPipe } from './wiki/markdown.pipe';
     PagesRoutingModule,
     FormsModule
   ],
+  providers: [IssueService],
   declarations: [PagesComponent, TopComponent, IssueComponent, WikiComponent, MarkdownPipe]
 })
 export class PagesModule { }
